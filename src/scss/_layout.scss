@@ -1,0 +1,28 @@
+.page-wrap {
+	width: 100%;
+
+	&.full-screen {
+		min-height: 100vh;
+	}
+}
+
+.flex {
+	display: flex;
+
+	&.flex-column {
+		flex-direction: column;
+	}
+
+	&.j-center {
+		justify-content: center;
+	}
+
+	&.a-center {
+		align-items: center;
+	}
+
+	&.flex-center {
+		justify-content: center;
+		align-items: center;
+	}
+}
