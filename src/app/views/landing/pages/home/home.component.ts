@@ -15,15 +15,15 @@ export class HomeComponent implements OnInit {
   ];
   private retypeText: string[] = [
     'coder',
+    'gamer',
     'developer',
     'designer',
     'manager',
     'project manager',
+    'surfer',
     'consultant',
     'CEO',
     'entrepreneur',
-    'traveler',
-    'surfer',
     '...'
   ];
   public typedDisplay: string[] = [
@@ -71,14 +71,14 @@ export class HomeComponent implements OnInit {
       setTimeout(that.retypeCallback, that.randomRange(max, min), that);
     } else if (current_length == total_length && that.retypeForward) {
       that.retypeForward = false;
-      setTimeout(that.retypeCallback, that.randomRange(500, 1200), that);
+      setTimeout(that.retypeCallback, that.currentRetype == that.retypeText.length - 1 ? 5000 : that.randomRange(500, 1200), that);
     } else if (current_length > 0) {
       that.retypeDisplay = that.retypeDisplay.slice(0, -1);
       setTimeout(that.retypeCallback, 100, that);
     } else {
       that.currentRetype = that.currentRetype + 1 < that.retypeText.length ? that.currentRetype + 1 : 0;
       that.retypeForward = true;
-      setTimeout(that.retypeCallback, that.currentRetype == 0 ? 5000 : 200, that);
+      setTimeout(that.retypeCallback, 200, that);
     }
   }
 
