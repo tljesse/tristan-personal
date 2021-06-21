@@ -1,3 +1,6 @@
+@import 'src/scss/_queries';
+@import 'src/scss/_hover-box';
+
 .home-wrap {
   height: 100vh;
   max-height: 100vh;
@@ -8,7 +11,6 @@
 }
 
 h1 {
-  
   font-size: 32px;
   text-shadow: 0 0 0 rgba(0,0,0,0.8);
   text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
@@ -46,6 +48,32 @@ p {
     width: 25px;
     height: 25px;
   }
+}
+
+.menu {
+  a {
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    color: rgba(250, 198, 0, 0.6);
+    font-size: 18px;
+    
+    span {
+      display: inline-block;
+      transform-origin: bottom center;
+      height: 200px;
+      width: 20px;
+      transition: 0.5s;
+      position:absolute;
+      
+      @for $i from 1 through 100 {
+        &.char#{$i} {
+          left: ($i*20px);
+          top: 20px;
+        }
+      }
+    } // span
+  } // a
 }
 
 .wave,
@@ -88,4 +116,19 @@ p {
 
 @keyframes spin {
   100% { transform: rotate(360deg); }
+}
+
+@include mq-lg {
+  .hover-box {
+    &:hover {
+      > a {
+        @for $i from 1 through 9 {
+          .char#{$i} {
+            transform: rotate(($i*6)+deg);
+            left: 150px;
+          }
+        }
+      }
+    } 
+  }
 }

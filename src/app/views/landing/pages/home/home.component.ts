@@ -35,6 +35,8 @@ export class HomeComponent implements OnInit {
   currentRetype: number = 0;
   retypeForward: boolean = true;
 
+  splitMenu: string[] = ['B','L','O','G'];
+
   constructor() { }
 
   ngOnInit(): void {

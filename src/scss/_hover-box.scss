@@ -1,0 +1,47 @@
+.hover-box {
+  //border: 1px solid black;
+  position: absolute;
+  width: 50vw;
+  height: 50vw;
+  cursor: pointer;
+  z-index: 10;
+  
+  &.top {
+    width: 50vw;
+    top: 0;
+    right: 0;
+    //@include gradient-animation(225, $banner-mid, transparent, transparent, 0.5s);
+  }
+  
+  &.right {
+    bottom: 0;
+    right: 0;
+    transform: rotate(90deg);
+    //@include gradient-animation(225, $banner-blue, transparent, transparent, 0.5s);
+  }
+  
+  &.bottom {
+    bottom: 0;
+    left: 0;
+    transform: rotate(180deg);
+    //@include gradient-animation(225, $banner-mid, transparent, transparent, 0.5s);
+  }
+  
+  &.left {
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg);
+    //@include gradient-animation(225, $banner-green, transparent, transparent, 0.5s);
+  }
+}
+
+@include mq-lg {
+  .hover-box {
+    width: 300px;
+    height: 300px;
+
+    &.top {
+      width: 350px;
+    }
+  }
+}
