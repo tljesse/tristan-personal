@@ -5,7 +5,11 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./views/landing/landing.module').then(m => m.LandingModule)
-  }
+  },
+  { 
+    path: 'blog',
+    loadChildren: () => import('./views/blog/blog.module').then(m => m.BlogModule),
+  },
 ];
 
 @NgModule({
