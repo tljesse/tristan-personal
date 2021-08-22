@@ -5,7 +5,9 @@ import {ScullyLibModule} from '@scullyio/ng-lib';
 import { AngularMaterialModule } from '@app/_shared/material.module';
 import { SharedModule } from '@app/_shared/shared.module';
 
-import { BlogRoutingModule } from './blog.routing';
+import { BlogRoutingModule } from './blog-routing.module';
+
+import { BlogSnippetComponent} from './_components';
 
 import { 
   BlogComponent,
@@ -13,6 +15,8 @@ import {
 
 @NgModule({
   declarations: [
+    BlogSnippetComponent,
+
     BlogComponent,
     BlogHomeComponent
   ],

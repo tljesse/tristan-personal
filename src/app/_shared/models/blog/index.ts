@@ -1,0 +1,1 @@
+export * from './tristan-blog-route.model';

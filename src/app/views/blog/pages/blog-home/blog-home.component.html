@@ -1,1 +1,11 @@
-<p>blog-home works!</p>
+<div class="blog-home">
+	<div class="left-items">
+
+	</div>
+
+	<div class="right-items">
+		<tristan-blog-snippet *ngFor="let article of articles"
+			[article]="article">
+		</tristan-blog-snippet>
+	</div>
+</div>
