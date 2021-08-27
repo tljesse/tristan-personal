@@ -15,5 +15,7 @@
 </mat-card> -->
 
 <div class="blog-snippet">
-	<h2>{{ article.title }}</h2>
+	<h2><span class="underline"></span>{{ article.title }}</h2>
+	<p class="blurb">{{ article.blurb }}</p>
+	<p class="date">{{ article.datePublished | date: 'mediumDate' }}</p>
 </div>
