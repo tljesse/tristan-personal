@@ -24,7 +24,7 @@ export class BlogHomeComponent implements OnInit {
       //articles.sort((a: any, b: any) => -a.datePublished.localeCompare(b.datePublished));
       console.log(articles);
 
-      this.articles = articles;
+      this.articles = [...articles,...articles,...articles,...articles,...articles,...articles,...articles,...articles];
     });
   }
 
