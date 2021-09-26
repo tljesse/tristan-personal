@@ -12,13 +12,15 @@ import { BlogSnippetComponent} from './_components';
 import { 
   BlogComponent,
   BlogHomeComponent } from './pages';
+import { BlogHeaderComponent } from './_components/blog-header/blog-header.component';
 
 @NgModule({
   declarations: [
     BlogSnippetComponent,
 
     BlogComponent,
-    BlogHomeComponent
+    BlogHomeComponent,
+    BlogHeaderComponent
   ],
   imports: [
     CommonModule,
