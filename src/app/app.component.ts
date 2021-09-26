@@ -1,10 +1,27 @@
 import { Component, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import {trigger, animate, style, group, animateChild, query, stagger, transition, state} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('routerTransition', [
+      transition('* <=> *', [    
+        query(':enter, :leave', style({ position: 'fixed', width:'100%' })),
+        group([ 
+          query(':enter', [
+            style({ transform: 'translateX(200%)' }),
+            animate('1s ease-in-out', style({ transform: 'translateX(0%)' }))
+          ]),
+          query(':leave', [
+            style({ transform: 'translateX(0%)' }),
+            animate('1s ease-in-out', style({ transform: 'translateX(-200%)' }))]),
+        ])
+      ])
+    ])
+   ],
 })
 export class AppComponent {
   title = 'tristan-personal';
@@ -26,5 +43,10 @@ export class AppComponent {
           this.previousUrl = currentUrlSlug;
         }
       });
+  }
+
+  getState(outlet: any) {
+    // Changing the activatedRouteData.state triggers the animation
+    return outlet.activatedRouteData.state;
   }
 }
