@@ -1,0 +1,15 @@
+<div class="tristy-gets-maried flex flex-column flex-center">
+	<div class="details date-location flex">
+		<h5 class="date">June 17, 2022</h5>
+		<h5 class="location">Alenquer, Portugal</h5>
+	</div>
+
+	<p class="details hashtag">#TristygetsMaried</p>
+	<h1>Marissa & Tristan</h1>
+
+	<ng-container *ngFor="let link of links">
+		<a *ngIf="link.href" mat-stroked-button class="flex flex-center" [href]="link.href">{{ link.text }}</a>
+		<a *ngIf="link.routerLink" mat-stroked-button class="flex flex-center" [routerLink]="link.routerLink">{{ link.text }}</a>
+	</ng-container>
+
+</div>
