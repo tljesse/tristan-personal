@@ -6,15 +6,16 @@ import { SharedModule } from '@app/_shared/shared.module';
 
 import { TristyGetsMariedRoutingModule } from './tristy-gets-maried.routing';
 
-import { HomeComponent } from './pages/home/home.component';
-import { CovidComponent } from './pages/covid/covid.component';
+import { 
+  CovidComponent,
+  HomeComponent } from './pages';
 
-
+import { NgxFileDropModule } from 'ngx-file-drop';
 
 @NgModule({
   declarations: [
-    HomeComponent,
-    CovidComponent
+    CovidComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +23,9 @@ import { CovidComponent } from './pages/covid/covid.component';
     AngularMaterialModule,
     SharedModule,
 
-    TristyGetsMariedRoutingModule
+    TristyGetsMariedRoutingModule,
+
+    NgxFileDropModule
   ]
 })
 export class TristyGetsMariedModule { }

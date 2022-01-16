@@ -24,3 +24,17 @@ body {
 		//overflow: auto;
 	}
 }
+
+.tristy-gets-maried {
+	.tristy-form {
+		.ngx-file-drop__drop-zone {
+			margin: 0.5em;
+			border-color: #768b7f;
+		}
+
+		.ngx-file-drop__content {
+			color: #768b7f;
+		}
+	}
+}
+

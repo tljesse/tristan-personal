@@ -1,11 +1,46 @@
 <div class="tristy-gets-maried covid-wrap flex flex-column flex-center">
-	<div class="content-wrap">
+	<div class="content-wrap flex flex-column flex-center">
 		<h1>Mari, Tristan and COVID-19</h1>
 
-		<p>While we hope to avoid inconveniences, the reality of the ongoing pandemic means we must take precautions for such a gathering. We are requiring all of our guests to be vaccinated for our own piece of mind as well as regulations put in place by the Portuguese government. Below we ask you to add your full name and upload proof of COVID vaccination.</p>
+		<p>While we hope to avoid inconveniences, the reality of the ongoing pandemic means we must take precautions for such a gathering. For the sake of some of our immunocomprimised guests as well as regulations put in place by the Portuguese government we are requiring all attending to be fully vaccinated.</p>
 
-		<form>
-			
+		<p>Below we ask you to add your full name and upload proof of COVID vaccination.</p>
+
+		<form class="tristy-form" [formGroup]="covidForm">
+			<div class="form-row">
+				<mat-form-field class="fx-100" appearance="outline">
+					<input matInput formControlName="name" placeholder="Your first & last name">
+					<mat-error *ngIf="covidForm.get('name')?.hasError('required')">Required</mat-error>
+				</mat-form-field>
+			</div>
+
+			<div class="center">
+		    <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)">
+	        <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+	        	<div class="flex flex-column flex-center">
+	          	<span>Drop Files Here</span>
+		          <span>or</span>
+		          <button type="button" class="mat-button mat-raised-button" (click)="openFileSelector()">Browse Files</button>
+		        </div>
+	        </ng-template>
+		    </ngx-file-drop>
+		    <div class="upload-table">
+	        <table class="table">
+            <!-- <thead>
+              <tr>
+                <th>Name</th>
+              </tr>
+            </thead> -->
+            <tbody class="upload-name-style">
+              <tr *ngFor="let item of files; let i=index">
+                <td><strong>{{ item.relativePath }}</strong></td>
+              </tr>
+            </tbody>
+	        </table>
+		    </div>
+			</div>
+
+			<button mat-raised-button [disabled]="disableSubmit()">Submit</button>
 		</form>
 	</div>
 </div>

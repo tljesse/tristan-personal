@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
     {text: 'Itinerary', href: 'https://www.zola.com/wedding/tristygetsmaried/event'},
     {text: 'RSVP', href: 'https://www.zola.com/wedding/tristygetsmaried/rsvp'},
     {text: 'FAQ', href: 'https://www.zola.com/wedding/tristygetsmaried/faq'},
-    //{text: 'COVID', routerLink: '/tristygetsmaried/covid' }
+    {text: 'COVID', routerLink: '/tristygetsmaried/covid' }
   ];
 
   constructor() { }
