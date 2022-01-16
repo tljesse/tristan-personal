@@ -19,6 +19,7 @@
     "@angular/common": "~12.0.5",
     "@angular/compiler": "~12.0.5",
     "@angular/core": "~12.0.5",
+    "@angular/fire": "^7.2.0",
     "@angular/forms": "~12.0.5",
     "@angular/material": "^12.0.5",
     "@angular/platform-browser": "~12.0.5",
@@ -30,7 +31,9 @@
     "ngx-file-drop": "^13.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "firebase": "^9.4.0",
+    "rxfire": "^6.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.0.5",

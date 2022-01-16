@@ -10,6 +10,10 @@ import {
   CovidComponent,
   HomeComponent } from './pages';
 
+import {
+  CovidService,
+  StorageService } from './services';
+
 import { NgxFileDropModule } from 'ngx-file-drop';
 
 @NgModule({
@@ -26,6 +30,10 @@ import { NgxFileDropModule } from 'ngx-file-drop';
     TristyGetsMariedRoutingModule,
 
     NgxFileDropModule
+  ],
+  providers: [
+    CovidService,
+    StorageService
   ]
 })
 export class TristyGetsMariedModule { }

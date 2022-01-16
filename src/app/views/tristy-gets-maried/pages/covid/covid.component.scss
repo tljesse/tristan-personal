@@ -75,6 +75,26 @@ p {
 	}
 }
 
+.drop-wrap {
+	position: relative;
+}
+
+.mat-error {
+	position: absolute;
+	bottom: 1em;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.mat-progress-bar {
+	width: calc(100% - 4em);
+	margin: -2em 2em;
+}
+
+.progress {
+	margin-left: 2em;
+}
+
 .upload-table {
 	margin-bottom: 2em;
 }
