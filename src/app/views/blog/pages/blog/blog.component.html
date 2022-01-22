@@ -1,9 +1,12 @@
 <div class="blog-wrap">
+	<tristan-blog-header
+		[title]="pageData.title"
+		[subtitle]="pageData.description"></tristan-blog-header>
 	<div class="jumbotron-wrap">
-		<div class="header d-flex flex-column flex-j-center flex-a-center" [class.small]="pageData?.title?.length > 45">
+		<!-- <div class="header d-flex flex-column flex-j-center flex-a-center" [class.small]="pageData?.title?.length > 45">
 			<h1>{{ pageData?.title || 'Tristan\'s Blog' }}</h1>
 			<h2>{{ pageData?.description || 'Keep up with latest trends, get some new ideas, expand your knowledge of the web!' }}</h2>
-		</div>
+		</div> -->
 
 		<div class="blog-bg-img">
 			<img [src]="pageData?.image">

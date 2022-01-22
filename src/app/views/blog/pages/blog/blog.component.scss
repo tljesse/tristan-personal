@@ -1,0 +1,20 @@
+.blog-wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	max-width: 1300px;
+	margin: 0 auto;
+	position: relative;
+}
+
+tristan-blog-header {
+	width: 100%;
+}
+
+.article-wrap {
+	max-width: 900px;
+  margin: 0 auto;
+  color: #fff;
+  text-shadow: 1px 1px rgba(0,0,0,0.3);
+}

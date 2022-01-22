@@ -15,7 +15,7 @@
 </mat-card> -->
 
 <div class="blog-snippet">
-	<h2><span class="text">{{ article.title }}</span><span class="underline"></span></h2>
+	<h2 [routerLink]="['/blog/' + article.slug]"><span class="text">{{ article.title }}</span><span class="underline"></span></h2>
 	<p class="blurb">{{ article.blurb }}</p>
 	<p class="date">{{ article.datePublished | date: 'mediumDate' }}</p>
 </div>

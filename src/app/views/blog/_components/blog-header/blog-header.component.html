@@ -1,3 +1,13 @@
 <div class="blog-header">
+	<div class="left-items">
+		<p><mat-icon>account_circle</mat-icon> Tristan Jesse</p>
+	</div>
+
 	<h1>{{ title }}</h1>
+	<p *ngIf="subtitle" class="subtitle">{{ subtitle }}</p>
+
+	<div class="right-items">
+		<mat-icon routerLink="/">home</mat-icon>
+		<mat-icon routerLink="/blog" routerLinkActive="active">newspaper</mat-icon>
+	</div>
 </div>
