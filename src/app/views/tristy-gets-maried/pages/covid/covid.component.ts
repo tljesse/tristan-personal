@@ -52,7 +52,9 @@ export class CovidComponent implements OnInit {
         if (droppedFile.fileEntry.isFile) {
           const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
           fileEntry.file((file: File) => {
-
+            if (!this.checkFileUploadType(file.type)) {
+              throw new Error('That file type is not supported. We can accept image files as JPEG, PNG, BMP, GIF, SVG as well as PDF and TXT');
+            }
           });
         } else {
           // It was a directory (empty directories are added, otherwise only files)
@@ -64,6 +66,7 @@ export class CovidComponent implements OnInit {
       }
     } catch(err: any) {
       this.snackBar.open(err?.message ? err.message : 'An error occurred', null, {duration: 5000});
+      this.files = [];
     }
     
   }
@@ -138,6 +141,19 @@ export class CovidComponent implements OnInit {
       })).subscribe();
     })
     
+  }
+
+  private checkFileUploadType(type: any, isImageUpload:boolean = false) {
+    let typeArray = [];
+      typeArray = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'image/bmp',
+            'application/msword', 'application/pdf', 'text/plain'];
+  
+    if(typeArray.indexOf(type) > -1) {           
+      return true;
+    } else {             
+      return false;
+    }
+
   }
 
 }
