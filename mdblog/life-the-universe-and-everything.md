@@ -1,9 +1,9 @@
 ---
 title: 'Life, the Universe and Everything'
-description: blog description
+description: What have I been doing
 published: true
 blurb: 'Read along as I ramble about my current projects, feelings and what is coming next'
-datePublished: '2021-08-16'
+datePublished: '2023-01-09'
 slug: 'life-the-universe-and-everything'
 ---
 
@@ -11,7 +11,9 @@ Another day another blog. For years I have had the intention to write a blog and
 
 Every time I start up writing I can't decide on what the overall theme of the blog will be (maybe this is a reflection of my personality). So this time around I will do the same and not commit to this being a tech blog, a lifestyle blog or just a whatever anything blog. There will be times I will want to write about tech and other times I'll stray far away and talk about fish perhaps. I don't expect many people to read and I don't have much motivation to promote this so doing it however I might want works perfectly.
 
-In the past few years I have started up my own web development agency after years of planning to do so. Now we have consistent work and aim to grow steadily in the coming years. If you are interested you can check us out Arthas Development at our website <a href="https://arthas.dev">https://arthas.dev</a>. There we have a tech/marketing blog that does actually have a theme and ***should*** have consistent updates. The last year with Arthas has kept me very busy with managing a team, searching for additional clients and attempting to expand all while balancing time continuing to code and learn new skills.
+In the past few years I have started up my own web development agency after years of planning to do so. Now we have consistent work and aim to grow steadily in the coming years. If you are interested you can check us out Arthas Development at our website <a href="https://arthas.dev">https://arthas.dev</a>. There we have a tech/marketing blog that does actually have a theme and ***should*** have consistent updates. The last few years with Arthas has kept me very busy with managing a team, searching for additional clients and attempting to expand all while balancing time continuing to code and learn new skills.
+
+The agency is still going although the push for growth has stopped and it is more of maintaining the current speed. My work as a freelancer has essentially ended and transitioned to one of the leaders of the startup <a href="https://amptify.com">Amptify</a>. Now I am running the technical side of that company as well as the development team, on top of Arthas this keeps me quite busy. My day to day coding has decreased and my time is consumed being a leader and other business activities.
 
 ## Running an Agency
 
@@ -23,4 +25,4 @@ Even spending too much time focusing on project management is a sink hole as I n
 
 ## Wrap It Up Already
 
-Like I said, this article has been sitting gathering electonic dust for six months. I feel like there isn't really a conclusion to it which is probably why I never published it. Getting this out there is just a step towards a habit of writing which I hope to continue. See you next time!
+Like I said, this article has been sitting gathering electonic dust for six (*24*) months. I feel like there isn't really a conclusion to it which is probably why I never published it. Getting this out there is just a step towards a habit of writing which I hope to continue. See you next time!
