@@ -57,11 +57,19 @@ tristan-blog-header {
   position: absolute;
   width: 30%;
   height: 50vh;
-  top: 230px;
-  left: 0;
-  transform: translateZ(-2px) scale(3);
-  -webkit-transform-origin-y: 400% 100% 0px;
-  -moz-transform-origin: 400% 100% 0px;
-  -ms-transform-origin: 400% 100% 0px;
-  transform-origin: 400% 100% 0px;
+  //top: 230px;
+  //left: 0;
+  top: 100px;
+  left: -40px;
+  //transform: translateZ(-2px) scale(3);
+  // -webkit-transform-origin-y: 400% 100% 0px;
+  // -moz-transform-origin: 400% 100% 0px;
+  // -ms-transform-origin: 400% 100% 0px;
+  // transform-origin: 400% 100% 0px;
+}
+
+@media screen and (min-width: 1280px) {
+	.parallax {
+		left: 0;
+	}
 }
