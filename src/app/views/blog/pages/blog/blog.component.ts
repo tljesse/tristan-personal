@@ -30,7 +30,7 @@ export class BlogComponent implements OnInit {
       this.pageData = current;
     });
 
-    this.renderer.addClass(document.body, 'scoll-content');
+    this.renderer.addClass(document.body, 'scroll-content');
   }
 
   ngOnDestroy(){
