@@ -13,6 +13,7 @@ const routes: Routes = [
   {
     path: ':title',
     component: BlogComponent,
+    data: {state: 'article'}
   },
   {
     path: '**',

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, Renderer2} from '@angular/core';
 import {ActivatedRoute, Router, ROUTES} from '@angular/router';
 
 import { ScullyRoutesService} from '@scullyio/ng-lib';
@@ -21,18 +21,23 @@ export class BlogComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private scully: ScullyRoutesService) {
+              private scully: ScullyRoutesService,
+              private renderer: Renderer2) {
   }
   
   ngOnInit() {
     this.scully.getCurrent().subscribe(current => {
       this.pageData = current;
     });
+
+    this.renderer.addClass(document.body, 'scoll-content');
   }
 
   ngOnDestroy(){
-    this._onDestroy.next()
-    this._onDestroy.complete()
+    this._onDestroy.next();
+    this._onDestroy.complete();
+
+    this.renderer.removeClass(document.body, 'scroll-content');
   }
 
 }
