@@ -15,6 +15,17 @@
 	</div>
 
 	<div class="article-wrap">
+		<div class="article-detail flex flex-j-between a-center">
+			<div class="authors flex">
+				<div class="author-info flex" *ngFor="let author of pageData.author; let i = index">
+					<img [src]="pageData.authorImage?.length && pageData.authorImage[i] ? pageData.authorImage[i] : '../../../../assets/img/arthas-logo-100x100.png'"/>
+					<p>{{ author }}</p>
+				</div>
+			</div>
+
+			<p>{{ pageData?.datePublished | date: 'mediumDate' }}</p>
+		</div>
+		
 		<div class="scully-content-wrap">
 			<!-- This is where Scully will inject the static HTML -->
 			<scully-content></scully-content>

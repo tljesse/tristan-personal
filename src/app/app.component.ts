@@ -56,6 +56,18 @@ import {trigger, animate, style, group, animateChild, query, stagger, transition
             animate('1s ease-in-out', style({ transform: 'translateY(200%)' }))], {optional: true}),
         ])
       ]),
+      transition('home => article', [
+        query(':enter, :leave', style({ position: 'fixed', height:'100%', width: '100%' }), {optional: true}),
+        group([ 
+          query(':enter', [
+            style({ transform: 'translate(200%, 200%)' }),
+            animate('1s ease-in-out', style({ transform: 'translate(0%, 0%)' }))
+          ], {optional: true}),
+          query(':leave', [
+            style({ transform: 'translate(0%, 0%)' }),
+            animate('1s ease-in-out', style({ transform: 'translate(-200%, -200%)' }))], {optional: true}),
+        ])
+      ]),
       transition('article => home', [
         query(':enter, :leave', style({ position: 'fixed', height:'100%', width: '100%' }), {optional: true}),
         group([ 
