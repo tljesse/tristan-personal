@@ -14,7 +14,7 @@ import {
   CovidService,
   StorageService } from './services';
 
-import { NgxFileDropModule } from 'ngx-file-drop';
+//import { NgxFileDropModule } from 'ngx-file-drop';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
 
     TristyGetsMariedRoutingModule,
 
-    NgxFileDropModule
+    //NgxFileDropModule
   ],
   providers: [
     CovidService,
