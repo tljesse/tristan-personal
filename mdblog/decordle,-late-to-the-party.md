@@ -253,9 +253,44 @@ We fill our local correct and includes letters arrays each with a 5 value array 
 
 Next we have our subscription to check the answer. Firstly if the word is correct and already been guessed we can just skip all this nonsense. If not, check the answer to the provided answer, check each character to see if it is an exact, correct, match or if it is somewhere, includes, in the word. Emit this result with the `matchedLetters` output and finally, if the whole word is correct then send out the index that we are at to let the parent keep track of that. 
 
-Now the HTML
+Now the HTML which may look complex but it is quite straightforward. We utilize `*ngFor` to do a lot of the hard work for us.
 
-That gives you all the pieces you need for this component!
+```html
+<div class="decordle-words w-100 flex flex-col cur-{{ currentIndex }} cor-{{ correctIndex }}" [class.close]="close" (click)="openArea()">
+	<div *ngFor="let guess of guesses; let i = index" class="guess-row row-{{ i }} flex w-100" [ngClass]="{'complete': correct, 'current': i == currentIndex}">
+		<ng-container *ngIf="guess?.length && (!correct || i < correctIndex + 1); else placeholder">
+			<div *ngFor="let letter of guess; let char = index" 
+				class="letter-box flex flex-center" 
+				[ngClass]="{'invalid': i == currentIndex && invalidWord, 'correct': correctLetters.length && correctLetters[i] && correctLetters[i][char], 'includes': includesLetters.length && includesLetters[i] && includesLetters[i][char]}">
+				{{ letter }}
+			</div>
+		</ng-container>
+
+		<ng-template #placeholder>
+			<div class="word-placeholder">
+			</div>
+		</ng-template>
+	</div>
+
+	<div *ngIf="!correct && showAnswer" class="answer">
+		<p>{{ answer }}</p>
+	</div>
+</div>
+
+```
+
+First let's take a look at the classes on the divs. There is a lot going on in there and many of the classes are dynamic, they'll be different in each iteration of the loop. This helps our CSS style each word and letter accordingly. We check for correct whole words, correct letters, matching letters and all other possible states then use our SCSS to make it all look pretty.
+
+The other important part is making sure it knows when to display the word and when to show the placeholder, IE that word has been correctly guessed in an earlier move. Can you make out how this works through this statement?
+
+```html
+<ng-container *ngIf="guess?.length && (!correct || i < correctIndex + 1); else placeholder">
+
+```
+
+Again I won't go through the styles, but this should get you most of the way there and give you all you need for this component!
 
 ## The Front End - Putting it Together
+
+There is one more component that I created for this game but this is really the big picture part. In this component I bring in the last two components we created and build out a full instance of the game. Why did I put this in a component and not just another page? Well with this approach I can make the number of boards, guess and all the answers component inputs which allows me to again, easily create different game modes with minimal extra coding or copy and paste work.
 
