@@ -1,12 +1,16 @@
 ---
 title: 'Decordle, Late to the Party'
-description: A deep dive into the word guessing game variant
+description: 'A deep dive into the word guessing game variant'
 published: false
 blurb: 'I made a thing, but it is probably too late.'
-datePublished: '2023-02-16'
-slug: 'decordle-late-to-the-party'
-authorImage: ['../../../../assets/img/tristan.png']
-author: ["Tristan Jesse"]
+datePublished: '2023-05-29'
+slug: decordle-late-to-the-party
+authorImage:
+    - ../../../../assets/img/tristan.png
+author:
+    - 'Tristan Jesse'
+slugs:
+    - ___UNPUBLISHED___li986eyw_Z8tDmEhXAkkYUsyL3OnbkN3X97EYSbq1
 ---
 
 Time is a predator that's stalking us, or so says the villian in Star Trek: Generations. While that may be a bit extreme we are nevertheless impacted by time...all the time! The Wordle craze came about quite some time ago and it took over pop culture like mad. It is a very simple game but still addicting but the thing that really gave it legs was the ability of sharing your accomplishments and easily relating. Each player around the world had the same set of words each day and the mechanism for showing how you did was simple. This led to friends vying for the best round each day for months as the urge to do better than your peers didn't seem to fade.
@@ -554,3 +558,89 @@ There are a few other functions in the TS but I'll let you figure those out. I w
 Wow wow wow! You see our child components, with their component inputs and outputs. We call some functions in the typescript and those functions do what needs to be done. You can see we loop through word-area's to make the correct number of boards for the game instance, then just have a single keyboard.
 
 This is mostly it for the front end. Are we there yet? Unfortunately not...but we're close!
+
+## The Final Piece - Firestore Backend
+
+So there are actually two parts here, the front end service to get data from Firestore, and the backend scheduler to run create the daily games. I won't go into the front end service here but I will do some shameless self promotion and point you to [the Arthas Ionic Angular Firebase article](https://arthas.dev/blog/ionic-angular-firebase-series-part-2) which covers the service, just ignore the Ionic parts.
+
+Now the backend, we use a [scheduled function with Firebase](https://firebase.google.com/docs/functions/schedule-functions?gen=2nd) which runs everyday to refresh the game and give us new words. It isn't too complicated, and doesn't respect the past (how rude) and does totally random words from the full word list each day. We'll go through a single file where we create the scheduler and generate the words. First the imports.
+
+```typescript
+import * as functions from "firebase-functions";
+
+import { create, getWhere, updateDocument } from '../firestore-helpers';
+
+import { FIVE_LETTER_WORDS } from '../../constants/words';
+```
+
+Ok so we need to bring in functions of course, we also have some helpers and a constant which is our word list. The helpers are just some simple repeatable firestore functions which let us do some CRUD with the database. I'll let you figure that out on your own (you're smart hopefully). Before getting to the scheduler, let's quickly look at a small helper function to create our words for the game.
+
+```typescript
+function generateWords(numWords: number): string[] {
+  let availableWords = JSON.parse(JSON.stringify(FIVE_LETTER_WORDS)),
+      selectedWords = [];
+
+  availableWords.sort(function() { return 0.5 - Math.random();});
+
+  for (let i = 0; i < numWords; i++) {
+    selectedWords.push(availableWords.pop());
+  }
+
+  return selectedWords;
+}
+```
+
+The name says it all, here we are generating the words, taking the number of words as a variable. We do a deep copy of our available words `let availableWords = JSON.parse(JSON.stringify(FIVE_LETTER_WORDS))`, you may find that not doing this causes some strange errors because of pointers and such. Now just a bit of maths randomizes the order of our word list (that was deep copied). From there we just pop off the words for the desired length of the array and voilà, consider our words generated.
+
+Next up, let's look at the actual scheduled function.
+
+```typescript
+export const scheduler = functions.pubsub.schedule('every day 00:01')
+  .timeZone('America/Chicago').onRun(async (context) => {
+    const decWords = generateWords(10),
+          ventWords = generateWords(20),
+          cincWords = generateWords(50),
+          cienWords = generateWords(100);
+
+    const docData = {
+      decordle: decWords,
+      ventordle: ventWords,
+      cincuentordle: cincWords,
+      cientordle: cienWords
+    };
+
+    const createdWordsDoc = await create('dailyWords', docData);
+
+    const currents = await getWhere('dailyWords', {where: [{field: 'isoDate', comparator: '==', value: 'current'}]});
+
+    if (createdWordsDoc?._id && currents?.length && currents[0]._id) {
+      await updateDocument('dailyWords', currents[0]._id, {
+        ...docData,
+        dailyWords_id: createdWordsDoc._id
+      });
+    } else {
+      await create('dailyWords', {
+        ...docData,
+        isoDate: 'current',
+        dailyWords_id: createdWordsDoc._id
+      });
+    }
+
+    return;
+  });
+```
+
+Here we're using our helper function we just went over and create four instances, which you'll see on our final game. Now a bit of firestore magic, create our daily words document. I should mention in our create helper function we automatically create a firestore timestamp and an isoDate which help us keep track of the date of each daily words document. We also mark a special document with an `isoDate` of `current` which always stores the active game. I'm not going to give you the whole create function, but you can use the firestore-admin package to slap a serverTimestamp on a document easily, then from there create an `ISOString` with a few simple additions.
+
+```typescript
+docData.dateCreated = admin.firestore.Timestamp.now();
+```
+
+The last bit of this function is just some code that should really only be necessary for the initial deployment. If there isn't a current document then one will be created, if not we'll update the current document with the new words. This esentially keeps our current document rolling with the same ID and also has a history of all our daily words from the past.
+
+## Hooray Finished (Kind of)!!
+
+That's pretty much it. I have left out still a couple of things, making the specific pages for each board, the SCSS of course, the Firestore service. Maybe some omissions here and there also. But if you are tackling a project of this size it's proably good for you to fill in the blanks a little bit. If you've made it this far, wow, thank you for putting up with me! Give yourself a break, a pat on the back and see how far you've come. This is more complex than it seems but you're we'll on the way to a fully working little app.
+
+Take a look at the finished product at [decordle.io](https://decordle.io/). You'll see a bit more polish, hopefully bug free and have a decent time playing. Good luck out there!
+
