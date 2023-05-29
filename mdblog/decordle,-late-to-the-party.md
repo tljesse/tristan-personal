@@ -345,7 +345,7 @@ export class OrdleComponent implements OnInit, AfterViewInit {
 
 ```
 
-We've got a bunch of variables here, with [getters and setters](https://andrew-morozw.medium.com/using-getters-and-setters-in-typescript-and-angular-d478829461c8) for variables that we want to stay up to date. And many of these should look somewhat familiar from other components. Many of these will be placed into child components as inputs.
+We've got a bunch of variables here, with [getters and setters](https://andrew-morozw.medium.com/using-getters-and-setters-in-typescript-and-angular-d478829461c8) for variables that we want to stay up to date. Some things should look familiar here and some maybe not. The `daily_id` is a unique identifier for each game each day. This helps to manage the state of your game so if you come back later you'll see your progress from earlier in the same day. We also set the boards, answers, guesses, checks, keyboard keys, as well as some flags for logic. Many of these will be placed into child components as inputs.
 
 Now a quick look at our lifecylce hooks
 
@@ -418,6 +418,7 @@ We keep this one private, and check if they have consented to cookies first. If 
 A few things to note here, remember local storage stores items as strings so all of our data needs to be turned back into an object, we do that easily here `const stateObj = JSON.parse(state);` by parsing the JSON. If we find some state data matching the current ID of the game they are in, we start to load that data, update our subject with each item sequentially (this keeps the all the logic working by simulating how the game would be played normally).
 
 Next up, let's get the user input working by capture our virtual keyboard interactions.
+
 
 ```typescript
 captureKey(key: string) {
