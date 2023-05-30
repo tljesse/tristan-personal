@@ -1,2 +1,11 @@
 identifier: kdq969n2p17a849f
 allowErrorCollect: true
+appPort: 1864
+staticPort: 1668
+reloadPort: 2667
+hostName: localhost
+projectName: tristan-personal
+homeFolder: /Users/tristanjesse/Documents/WebDev/tristan-personal
+distFolder: dist/tristan-personal
+outDir: /Users/tristanjesse/Documents/WebDev/tristan-personal/dist/static
+handle404: ''

@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./blog-home.component.scss']
 })
 export class BlogHomeComponent implements OnInit {
-  links$: Observable<TristanBlogRoute[]> = this.scully.available$;
+  links$: Observable<TristanBlogRoute[]> = this.scully.available$ as any;
 
   articles: TristanBlogRoute[] = [];
 

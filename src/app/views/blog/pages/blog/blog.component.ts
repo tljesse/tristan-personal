@@ -1,10 +1,12 @@
-import {Component, OnInit, ViewEncapsulation, Renderer2} from '@angular/core';
+import {Component, OnInit, AfterViewChecked, ViewEncapsulation, Renderer2} from '@angular/core';
 import {ActivatedRoute, Router, ROUTES} from '@angular/router';
 
 import { ScullyRoutesService} from '@scullyio/ng-lib';
 
 import { Subject, Observable } from 'rxjs';
 import {takeUntil} from 'rxjs/operators'
+
+import { HighlightService } from '@app/_shared/services';
 
 @Component({
   selector: 'app-blog',
@@ -13,16 +15,17 @@ import {takeUntil} from 'rxjs/operators'
   preserveWhitespaces: true,
   encapsulation: ViewEncapsulation.Emulated
 })
-export class BlogComponent implements OnInit {
+export class BlogComponent implements OnInit, AfterViewChecked {
   private _onDestroy = new Subject()
-  links$: Observable<any[]> = this.scully.available$;
+  links$: Observable<any[]> = this.scully.available$ as any;
 
   pageData: any;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private scully: ScullyRoutesService,
-              private renderer: Renderer2) {
+              private renderer: Renderer2,
+              private highlightService: HighlightService) {
   }
   
   ngOnInit() {
@@ -38,6 +41,10 @@ export class BlogComponent implements OnInit {
     this._onDestroy.complete();
 
     this.renderer.removeClass(document.body, 'scroll-content');
+  }
+
+  ngAfterViewChecked() {
+    this.highlightService.highlightAll();
   }
 
 }

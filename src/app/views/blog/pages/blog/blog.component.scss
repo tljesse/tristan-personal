@@ -12,6 +12,11 @@
 	position: relative;
 }
 
+.scroll-area {
+	height: 100vh;
+	overflow: auto;
+}
+
 tristan-blog-header {
 	width: 100%;
 }
@@ -22,10 +27,6 @@ tristan-blog-header {
   color: #fff;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
-
-
-
-
 
 .blog-bg-img {
 	position: absolute;
@@ -150,6 +151,14 @@ tristan-blog-header {
     	text-decoration: none;
     	color: rgba(250, 198, 0, 0.6);
     }
+	}
+}
+
+.scully-content-wrap {
+	margin-bottom: 5em;
+
+	h2 {
+		margin-top: 2em;
 	}
 }
 

@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import '~prismjs/plugins/toolbar/prism-toolbar.css';
+@import '~prism-themes/themes/prism-night-owl';
+
+
 @import 'src/scss/_layout';
 
 html, body { height: 100%; }
@@ -27,6 +31,10 @@ body {
 	.body-wrap {
 		//overflow: auto;
 	}
+}
+
+.code-toolbar {
+	margin: 3em 1em;
 }
 
 .tristy-gets-maried {

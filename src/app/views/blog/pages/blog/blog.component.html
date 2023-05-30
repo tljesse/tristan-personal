@@ -1,34 +1,36 @@
 <div class="blog-wrap">
-	<tristan-blog-header
-		[title]="pageData.title"
-		[subtitle]="pageData.description"></tristan-blog-header>
-	<div class="jumbotron-wrap">
-		<!-- <div class="header d-flex flex-column flex-j-center flex-a-center" [class.small]="pageData?.title?.length > 45">
-			<h1>{{ pageData?.title || 'Tristan\'s Blog' }}</h1>
-			<h2>{{ pageData?.description || 'Keep up with latest trends, get some new ideas, expand your knowledge of the web!' }}</h2>
-		</div> -->
+	<div class="scroll-area">
+		<tristan-blog-header
+			[title]="pageData.title"
+			[subtitle]="pageData.description"></tristan-blog-header>
+		<div class="jumbotron-wrap">
+			<!-- <div class="header d-flex flex-column flex-j-center flex-a-center" [class.small]="pageData?.title?.length > 45">
+				<h1>{{ pageData?.title || 'Tristan\'s Blog' }}</h1>
+				<h2>{{ pageData?.description || 'Keep up with latest trends, get some new ideas, expand your knowledge of the web!' }}</h2>
+			</div> -->
 
-		<div class="blog-bg-img">
-			<img [src]="pageData?.image">
-		</div>
-		<!-- <div class="clipped-bottom"></div> -->
-	</div>
-
-	<div class="article-wrap">
-		<div class="article-detail flex flex-j-between a-center">
-			<div class="authors flex">
-				<div class="author-info flex" *ngFor="let author of pageData.author; let i = index">
-					<img [src]="pageData.authorImage?.length && pageData.authorImage[i] ? pageData.authorImage[i] : '../../../../assets/img/arthas-logo-100x100.png'"/>
-					<p>{{ author }}</p>
-				</div>
+			<div class="blog-bg-img">
+				<img [src]="pageData?.image">
 			</div>
-
-			<p>{{ pageData?.datePublished | date: 'mediumDate' }}</p>
+			<!-- <div class="clipped-bottom"></div> -->
 		</div>
-		
-		<div class="scully-content-wrap">
-			<!-- This is where Scully will inject the static HTML -->
-			<scully-content></scully-content>
+
+		<div class="article-wrap">
+			<div class="article-detail flex flex-j-between a-center">
+				<div class="authors flex">
+					<div class="author-info flex" *ngFor="let author of pageData.author; let i = index">
+						<img [src]="pageData.authorImage?.length && pageData.authorImage[i] ? pageData.authorImage[i] : '../../../../assets/img/arthas-logo-100x100.png'"/>
+						<p>{{ author }}</p>
+					</div>
+				</div>
+
+				<p>{{ pageData?.datePublished | date: 'mediumDate' }}</p>
+			</div>
+			
+			<div class="scully-content-wrap">
+				<!-- This is where Scully will inject the static HTML -->
+				<scully-content></scully-content>
+			</div>
 		</div>
 	</div>
 </div>
